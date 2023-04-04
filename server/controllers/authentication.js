@@ -1,31 +1,51 @@
 // Authentication dependencies
 const router = require('express').Router();
+const db = require("../models");
 const bcrypt = require('bcrypt');
-const { error } = require('console');
-const cookieSession = require('cookie-session');
-const hashedPassword = await bcrypt.hash(req.body.password,12);
-const user = { name: req.body.username, password:hashedPassword };
-const result = await bcrypt.compare(password, user.password);
 
-try {
-    if(result == true){
-        console.log(`Login successful! Welcome ${user.name}`);
+const { User } = db;
+
+router.post('/', async (req,res) => {
+    let user = await User.findOne({
+        where: { username: req.body.username }
+    })
+    if (!user || !await bcrypt.compare(req.body.password, user.hashedPassword)) {
+        res.status(404).json({ message: 'Could not find username with that username and password'})
     } else {
-        console.log('Login Failed');
+        req.session.userId = user.userId;
+        res.json({user})
     }
-} catch (error) {
-    console.log("Something went wrong.", error)
-}
+})
 
-// cookie code
-app.use(cookieSession({
-    name: 'session',
-    sameSite:'strict',
-    keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24 * 60 * 60 * 1000
-}))
+router.get('/profile', async (req, res) => {
+    try {
+        let user = await User.findOne({
+            where: {
+                userId: req.session.userId
+            }
+        })
+        res.json(user)
+    } catch {
+        res.json(null)
+    }
+})
+  
 
-app.use(cors({
-    origin:`http:localhost:${process.env.PORT}`,
-    credentials: true
-}))
+module.exports = router
+
+
+
+
+// const hashedPassword = await bcrypt.hash(req.body.password,12);
+// const user = { name: req.body.username, password:hashedPassword };
+// const result = await bcrypt.compare(password, user.password);
+
+// try {
+//     if(result == true){
+//         console.log(`Login successful! Welcome ${user.name}`);
+//     } else {
+//         console.log('Login Failed');
+//     }
+// } catch (error) {
+//     console.log("Something went wrong.", error)
+// }
