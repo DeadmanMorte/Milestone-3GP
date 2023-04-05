@@ -1,10 +1,8 @@
 import { useContext, useState } from "react"
-import { useHistory } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser"
 
 function LoginForm() {
 
-    const history = useHistory()
 
     const { setCurrentUser } = useContext(CurrentUser)
 
@@ -30,7 +28,7 @@ async function handleSubmit(e) {
 
 if (response.status === 200) {
     setCurrentUser(data.user)
-    history.push('/')
+    CurrentUser.push('/')
 } else {
     setErrorMessage(data.message)
  }}

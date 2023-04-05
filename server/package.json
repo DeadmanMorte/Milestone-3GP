@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -10,16 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-<<<<<<< HEAD
-    "nodemon": "^2.0.22"
-=======
+    "mysql2": "^3.2.0",
     "nodemon": "^2.0.22",
     "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.30.0",
     "sequelize-cli": "^6.6.0",
     "sqlite3": "^5.1.6"
->>>>>>> 41dba98e223c5b27fce6d1cb22c10a5ed0851d83
   }
 }
