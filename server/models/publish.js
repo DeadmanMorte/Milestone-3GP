@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Publish extends Model {
 
     static associate({ Comment }) {
-      Publish.hasMany(Comment, {})
+      Publish.hasMany(Comment, {foreignKey: 'publish_id', as: 'comments'})
     }
 
   };
@@ -16,9 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    name: DataTypes.STRING,
+    username: DataTypes.STRING,
     caption: DataTypes.STRING,
-    pic: DataTypes.STRING
+    pic: DataTypes.STRING,
+    like: {
+      type: Number,
+      default: 0,
+    }
   }, {
     sequelize,
     underscored: true,
