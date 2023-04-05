@@ -6,6 +6,7 @@ const app = express();
 const {Sequelize} = require('sequelize');
 const cookieSession = require('cookie-session');
 
+const sequelize = new Sequelize(process.env.PG_URI);
 
 // cookie code
 app.use(cookieSession({
@@ -15,10 +16,11 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000
 }));
 
+
 app.use(cors({
-    origin:`http:localhost:${process.env.PORT}`,
-    credentials: true
-}));
+   origin: 'http:local//host:4000',
+   credentials: true
+}))
 
 //Express Settings
 require('dotenv').config();
@@ -30,8 +32,10 @@ app.use(bodyParser.json());
 
 
 // Controller & Routes
-app.use('/users', require('./controllers/users'));
-app.use('/authentication', require('./controllers/authentication'));
+app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
+app.use('/publish', require('./controllers/publish'))
+
 
 // Listen for Connection
 app.listen(process.env.PORT, () => {
