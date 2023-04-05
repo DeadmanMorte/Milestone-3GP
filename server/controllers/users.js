@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 
 const { User } = db;
 
-router.get('/users', (req,res)=>{
+
+router.get('/', (req,res)=>{
     res.send("user route works");
 });
 
