@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     passwordDigest: DataTypes.STRING,
-    availabsele_start_time: DataTypes.DATE,
+    available_start_time: DataTypes.DATE,
     end_time: DataTypes.DATE
   }, {
     sequelize,

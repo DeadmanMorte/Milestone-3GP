@@ -5,18 +5,18 @@ export const CurrentUser = createContext()
 
 function CurrentUserProvider({ children }){
 
-    const [currentUser, setCurrentUser] = useState(null)
-    useEffect(() => {
+    // const [currentUser, setCurrentUser] = useState(null)
+    // useEffect(() => {
 
-        const getLoggedInUser = async () => {
-            let response = await fetch(`http://localhost:${process.env.PORT}/authentication/profile`, {
-                credentials:'include'
-            })
-            let user = await response.json()
-            setCurrentUser(user)
-        }
-        getLoggedInUser()
-    }, [])
+    //     const getLoggedInUser = async () => {
+    //         let response = await fetch(`http://localhost:5432/authentication/profile`, {
+    //             credentials:'include'
+    //         })
+    //         let user = await response.json()
+    //         setCurrentUser(user)
+    //     }
+    //     getLoggedInUser()
+    // }, [])
 
     return (
         <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>

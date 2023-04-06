@@ -9,7 +9,7 @@ router.post('/', async (req,res) => {
     let user = await User.findOne({
         where: { username: req.body.username }
     })
-    if (!user || !await bcrypt.compare(req.body.password, user.hashedPassword)) {
+    if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({ message: 'Could not find username with that username and password'})
     } else {
         req.session.userId = user.userId;
