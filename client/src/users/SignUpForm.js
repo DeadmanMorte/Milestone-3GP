@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router"
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { CurrentUser } from "../contexts/CurrentUser";
+
 
 function SignUpForm() {
+
+	const { setCurrentUser } = useContext(CurrentUser)
 
 	const [user, setUser] = useState({
 		firstName: '',
@@ -9,6 +13,11 @@ function SignUpForm() {
 		username: '',
 		password: ''
 	})
+	
+	// Barrier check if logged in
+	if (CurrentUser  != null){
+        return <Feed />
+    }
 
 	async function handleSubmit(e) {
 		e.preventDefault()
@@ -21,8 +30,13 @@ function SignUpForm() {
 			},
 			body: JSON.stringify(user)
 		})
-
+		if (response.status === 200) {
+			setCurrentUser(user)
+			CurrentUser.push('/')
+		}else {
+		console.log(error)
 		user.push(`/`)
+		}
 	}
 
 	return (
@@ -64,6 +78,17 @@ function SignUpForm() {
 							className="form-control"
 							id="username"
 							name="username"
+						/>
+					</div>
+					<div className="col-sm-6 form-group">
+						<label htmlFor="email">Email</label>
+						<input
+							required
+							value={user.lastName}
+							onChange={e => setUser({ ...user, lastName: e.target.value })}
+							className="form-control"
+							id="email"
+							name="email"
 						/>
 					</div>
 					<div className="col-sm-6 form-group">

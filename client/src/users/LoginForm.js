@@ -1,5 +1,6 @@
-import { useContext, useState } from "react"
-import { CurrentUser } from "../contexts/CurrentUser"
+import { useContext, useState } from "react";
+import { CurrentUser } from "../contexts/CurrentUser";
+import SignUpForm from "./SignUpForm";
 
 function LoginForm() {
 
@@ -10,6 +11,11 @@ function LoginForm() {
         username: '',
         password: ''
     })
+    
+    // Barrier check if logged in
+    if (CurrentUser  != null){
+        return <Feed />
+    }
 
     const [errorMessage, setErrorMessage] = useState(null)
 
@@ -45,6 +51,10 @@ if (response.status === 200) {
                 : null
             }
             <form onSubmit={handleSubmit}>
+
+            <div className="row">
+                <h1>Welcome!</h1>
+            </div>
                 <div className="row">
                     <div className="col-sm-6 form-group">
                         <label htmlFor="email">Email</label>
@@ -71,6 +81,9 @@ if (response.status === 200) {
                         />
                     </div>
                 </div>
+                <div className="row">
+					<a href="/signup">First Time? Sign Up</a> 
+				</div>
                 <input className="btn btn-primary" type="submit" value="Login" />
             </form>
         </main>

@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { CurrentUser } from '../contexts/CurrentUser';
+import LoginForm from './LoginForm';
 
 function PostList() {
   const [posts, setPosts] = useState([]);
+  const { setCurrentUser } = useContext(CurrentUser)
 
   useEffect(() => {
     
+    if (CurrentUser == null || !CurrentUser){
+      return <LoginForm/>
+    }
+
   }, []);
 
   return (
