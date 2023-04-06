@@ -12,16 +12,16 @@ router.post('/', async (req,res) => {
     if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({ message: 'Could not find username with that username and password'})
     } else {
-        req.session.userId = user.userId;
+        req.session.user_id = user.user_id;
         res.json({user})
     }
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/self', async (req, res) => {
     try {
         let user = await User.findOne({
             where: {
-                userId: req.session.userId
+                user_id: req.session.userId
             }
         })
         res.json(user)
