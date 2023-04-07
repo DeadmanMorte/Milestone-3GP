@@ -14,9 +14,9 @@ function LoginForm() {
     })
     
     // Barrier check if logged in
-    // if (CurrentUser  != null){
-    //     return <Feed />
-    // }
+    if (CurrentUser  != null){
+        window.location.href = '/'
+    }
 
 
       
@@ -74,7 +74,7 @@ if (response.status === 200) {
                     </div>
                 </div>
                 <div className="row">
-					<a href="/sign-up">First Time? Sign Up</a> 
+					<a href="/signup">First Time? Sign Up</a> 
 				</div>
                 <input className="btn btn-primary" type="submit" value="Login" />
             </form>

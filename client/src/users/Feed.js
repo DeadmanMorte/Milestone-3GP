@@ -8,6 +8,7 @@ function PostList() {
 
   useEffect(() => {
     
+    	// Barrier check if not logged in
     if (CurrentUser == null ){
       window.location.href = '/login'
     } else if (CurrentUser) {

@@ -17,9 +17,9 @@ function SignUpForm() {
 	})
 
 	// Barrier check if logged in
-	// if (CurrentUser  != null){
-    //     return <Feed />
-    // }
+	if (CurrentUser  != null){
+        window.location.href = '/'
+    }
 
 	async function handleSubmit(e) {
 		e.preventDefault()
