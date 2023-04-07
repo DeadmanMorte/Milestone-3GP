@@ -1,43 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>HelloWorld()</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <header>
+      <nav class="menu-container">
+        <!-- burger menu -->
+        <input type="checkbox" aria-label="Toggle menu" />
+        <span></span>
+        <span></span>
+        <span></span>
+      
+        <!-- logo -->
+        <a href="#" class="menu-logo">
+          <img src="https://wweb.dev/resources/navigation-generator/logo-placeholder.png" alt="Website placeholder logo"/>
+        </a>
+      
+        <!-- menu items -->
+        <div class="menu">
+          <ul>
+            <li>
+              <a href="#home">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#pricing">
+                Feed
+              </a>
+            </li>
+          
+            
+          </ul>
+          <ul>
+            <li>
+              <a href="#signup">
+                Sign-up
+              </a>
+            </li>
+            <li>
+              <a href="#login">
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Welcome to HelloWorld()</h1>
+        <p>Connect with friends and share your life</p>
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </section>
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li><i class="fas fa-users"></i> Connect with friends</li>
+          <li><i class="fas fa-camera"></i> Share photos and videos</li>
+          <li><i class="fas fa-comments"></i> Chat with friends</li>
+        </ul>
+      </section>
+      <section class="post">
+        <h2>Post a Picture</h2>
+        <form>
+          <input type="file" name="picture">
+          <input type="text" name="caption" placeholder="Caption">
+          <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+      </section>
+      <section class="comments">
+        <h2>Comments</h2>
+        <ul>
+          <li>
+            <p><strong>John Doe:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec mi consequat, tempus velit quis, aliquam odio. Donec posuere ante et augue facilisis, a fringilla turpis vestibulum. Sed euismod, nunc eget elementum congue, lacus quam pellentesque urna, vel posuere enim mauris eu mi.</p>
+          </li>
+          <li>
+            <p><strong>Jane Smith:</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse at lacus imperdiet, dignissim velit ac, feugiat lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+          </li>
+          <li>
+            <p><strong>Bob Johnson:</strong> Proin semper dui id velit pretium, eget consequat risus pharetra. Nunc rhoncus, velit non pharetra venenatis, libero ipsum pretium justo , vel scelerisque urna nisl ac mauris. Praesent blandit, quam eu malesuada luctus, tellus est gravida tellus, sed cursus nibh nibh et mi.</p>
+          </li>
+          </ul>
+        <form>
+          <input type="text" name="name" placeholder="Name">
+          <textarea name="comment" placeholder="Comment"></textarea>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+      <section class="contact">
+          <h2>Contact Us</h2>
+        <form>
+          <input type="text" name="name" placeholder="Name">
+          <input type="text" email="email" placeholder="Email">
+          <textarea name="message" placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>© 2023 HelloWorld()</p>
+    </footer>
   </body>
 </html>
