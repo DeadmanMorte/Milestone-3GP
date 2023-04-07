@@ -7,12 +7,12 @@ const app = express();
 const {Sequelize} = require('sequelize');
 const cookieSession = require('cookie-session');
 const defineCurrentUser = require('./middleware/defineCurrentUser');
+const sqlite3 = require('sqlite3');
 const sequelize = new Sequelize(process.env.PG_URI);
 
 // cookie code
 app.use(cookieSession({
     name: 'session',
-    sameSite:'strict',
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24 * 60 * 60 * 1000
 }));
@@ -24,6 +24,7 @@ app.use(cors({
 }))
 
 //Express Settings
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -34,7 +35,7 @@ app.use(defineCurrentUser);
 // Controller & Routes
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
-app.use('/publish', require('./controllers/publish'))
+app.use('/publish', require('./controllers/publishs'))
 
 
 // Listen for Connection
