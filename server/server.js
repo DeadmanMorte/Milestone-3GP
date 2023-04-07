@@ -1,12 +1,13 @@
 // Modules and Globals
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const {Sequelize} = require('sequelize');
 const cookieSession = require('cookie-session');
-const sqlite3 = require('sqlite3')
+const defineCurrentUser = require('./middleware/defineCurrentUser');
+const sqlite3 = require('sqlite3');
 const sequelize = new Sequelize(process.env.PG_URI);
 
 // cookie code
@@ -18,7 +19,7 @@ app.use(cookieSession({
 
 
 app.use(cors({
-   origin: 'http:local//host:4000',
+   origin: 'http://localhost:3000',
    credentials: true
 }))
 
@@ -29,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(defineCurrentUser);
 
 // Controller & Routes
 app.use('/users', require('./controllers/users'))

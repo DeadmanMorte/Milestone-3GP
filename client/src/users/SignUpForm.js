@@ -1,19 +1,30 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router"
+import { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { CurrentUser } from "../contexts/CurrentUser";
+import Feed from './Feed'
+
 
 function SignUpForm() {
 
+	const { setCurrentUser } = useContext(CurrentUser)
+
 	const [user, setUser] = useState({
-		firstName: '',
-		lastName: '',
+		firstname: '',
+		lastname: '',
 		username: '',
+		email: '',
 		password: ''
 	})
+
+	// Barrier check if logged in
+	// if (CurrentUser  != null){
+    //     return <Feed />
+    // }
 
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:${process.env.PORT}/users/`, {
+		const response = await fetch(`http://localhost:5000/users/`, {
 			method: 'POST',
 			credentials:'include',
 			headers: {
@@ -21,9 +32,12 @@ function SignUpForm() {
 			},
 			body: JSON.stringify(user)
 		})
-
-		user.push(`/`)
-	}
+		if (response.status === 200) {
+			setCurrentUser(user)
+			window.location.href = '/'
+		} else {
+			 console.log('Sign Up fetch error')
+		}}
 
 	return (
 		<main>
@@ -31,25 +45,25 @@ function SignUpForm() {
 			<form onSubmit={handleSubmit}>
 				<div className="row">
 					<div className="col-sm-6 form-group">
-						<label htmlFor="firstName">First Name</label>
+						<label htmlFor="firstname">First Name</label>
 						<input
 							required
-							value={user.firstName}
-							onChange={e => setUser({ ...user, firstName: e.target.value })}
+							value={user.firstname}
+							onChange={e => setUser({ ...user, firstname: e.target.value })}
 							className="form-control"
-							id="firstName"
-							name="firstName"
+							id="firstname"
+							name="firstname"
 						/>
 					</div>
 					<div className="col-sm-6 form-group">
-						<label htmlFor="lastName">Last Name</label>
+						<label htmlFor="lastname">Last Name</label>
 						<input
 							required
-							value={user.lastName}
-							onChange={e => setUser({ ...user, lastName: e.target.value })}
+							value={user.lastname}
+							onChange={e => setUser({ ...user, lastname: e.target.value })}
 							className="form-control"
-							id="lastName"
-							name="lastName"
+							id="lastname"
+							name="lastname"
 						/>
 					</div>
 				</div>
@@ -64,6 +78,17 @@ function SignUpForm() {
 							className="form-control"
 							id="username"
 							name="username"
+						/>
+					</div>
+					<div className="col-sm-6 form-group">
+						<label htmlFor="email">Email</label>
+						<input
+							required
+							value={user.email}
+							onChange={e => setUser({ ...user, email: e.target.value })}
+							className="form-control"
+							id="email"
+							name="email"
 						/>
 					</div>
 					<div className="col-sm-6 form-group">
