@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LoginForm from './users/LoginForm';
 import SignUpForm from './users/SignUpForm';
 import Home from './users/Home';
+import Feed from './users/Feed'
 import './App.css';
 
 function App() {
   return (
+    <CurrentUserProvider>
       <BrowserRouter>
             <div className="App">
               <Routes>
@@ -18,6 +20,7 @@ function App() {
               </Routes>
             </div>
       </BrowserRouter>
+      </CurrentUserProvider>
   );
 }
 

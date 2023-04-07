@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CurrentUser } from '../contexts/CurrentUser';
 import LoginForm from './LoginForm';
 
@@ -8,8 +8,10 @@ function PostList() {
 
   useEffect(() => {
     
-    if (CurrentUser == null || !CurrentUser){
-      return <LoginForm/>
+    if (CurrentUser == null ){
+      window.location.href = '/login'
+    } else if (CurrentUser) {
+        console.log('user live')
     }
 
   }, []);

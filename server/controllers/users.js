@@ -17,6 +17,7 @@ router.post('/', async (req,res) => {
     })
         res.json(user);
         req.session.user_id = user.user_id;
+        console.log('woof')
 
 });
 

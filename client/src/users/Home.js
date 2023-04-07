@@ -1,10 +1,13 @@
 import { CurrentUser } from "../contexts/CurrentUser"
+import { useContext } from 'react'
 
 function Home() {
 
   const { setCurrentUser } = useContext(CurrentUser)
     
     return (
+
+      // Basically nonsense ChatGTP temp code and styling.
       <main>
         <nav>
           <a href="/login">Log in</a>
@@ -27,12 +30,6 @@ function Home() {
           TODO: make app able to speak to db. post and get data. have components to show data. stylize.
         </p>
       </main>
-
-
-
-
-
-
 
       <footer style={{ backgroundColor: '#333', color: '#fff', padding: '20px', textAlign: 'center' }}>
         <p style={{ fontSize: '16px', margin: 0 }}>© 2023 Our App. All rights reserved.</p>

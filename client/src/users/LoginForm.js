@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { CurrentUser } from "../contexts/CurrentUser";
 import SignUpForm from "./SignUpForm";
+import Feed from "./Feed"
 
 function LoginForm() {
 
@@ -13,16 +14,15 @@ function LoginForm() {
     })
     
     // Barrier check if logged in
-    if (CurrentUser  != null){
-        return <Feed />
-    }
+    // if (CurrentUser  != null){
+    //     return <Feed />
+    // }
 
-    const [errorMessage, setErrorMessage] = useState(null)
 
       
 async function handleSubmit(e) {
     e.preventDefault()
-    const response = await fetch(`http://localhost:${process.env.PORT}/authentication/`, {
+    const response = await fetch(`http://localhost:5000/authentication/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,22 +34,14 @@ async function handleSubmit(e) {
 
 if (response.status === 200) {
     setCurrentUser(data.user)
-    CurrentUser.push('/')
+    window.location.href= '/'
 } else {
-    setErrorMessage(data.message)
- }}
+    console.log('Log in fetch error')
+}}
 
     return (
         <main>
             <h1>Login</h1>
-            {errorMessage !== null
-                ? (
-                    <div className="alert alert-danger" role="alert">
-                        {errorMessage}
-                    </div>
-                )
-                : null
-            }
             <form onSubmit={handleSubmit}>
 
             <div className="row">
@@ -57,15 +49,15 @@ if (response.status === 200) {
             </div>
                 <div className="row">
                     <div className="col-sm-6 form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="username">Username</label>
                         <input
-                            type="email"
+                            type="username"
                             required
-                            value={credentials.email}
-                            onChange={e => setCredentials({ ...credentials, email: e.target.value })}
+                            value={credentials.username}
+                            onChange={e => setCredentials({ ...credentials, username: e.target.value })}
                             className="form-control"
-                            id="email"
-                            name="email"
+                            id="username"
+                            name="username"
                         />
                     </div>
                     <div className="col-sm-6 form-group">
@@ -82,7 +74,7 @@ if (response.status === 200) {
                     </div>
                 </div>
                 <div className="row">
-					<a href="/signup">First Time? Sign Up</a> 
+					<a href="/sign-up">First Time? Sign Up</a> 
 				</div>
                 <input className="btn btn-primary" type="submit" value="Login" />
             </form>
@@ -90,4 +82,4 @@ if (response.status === 200) {
     )
 }
 
-export default LoginForm
+export default LoginForm;

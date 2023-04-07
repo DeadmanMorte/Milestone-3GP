@@ -18,34 +18,10 @@ router.post('/', async (req,res) => {
 })
 
 router.get('/self', async (req, res) => {
-    try {
-        let user = await User.findOne({
-            where: {
-                user_id: req.session.userId
-            }
-        })
-        res.json(user)
-    } catch {
-        res.json(null)
-    }
+    res.json(req.currentUser)
 })
   
 
 module.exports = router
 
 
-
-
-// const hashedPassword = await bcrypt.hash(req.body.password,12);
-// const user = { name: req.body.username, password:hashedPassword };
-// const result = await bcrypt.compare(password, user.password);
-
-// try {
-//     if(result == true){
-//         console.log(`Login successful! Welcome ${user.name}`);
-//     } else {
-//         console.log('Login Failed');
-//     }
-// } catch (error) {
-//     console.log("Something went wrong.", error)
-// }
