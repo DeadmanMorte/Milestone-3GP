@@ -1,17 +1,17 @@
 // Modules and Globals
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const {Sequelize} = require('sequelize');
 const cookieSession = require('cookie-session');
-
+const sqlite3 = require('sqlite3')
 const sequelize = new Sequelize(process.env.PG_URI);
 
 // cookie code
 app.use(cookieSession({
     name: 'session',
-    sameSite:'strict',
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24 * 60 * 60 * 1000
 }));
@@ -23,7 +23,7 @@ app.use(cors({
 }))
 
 //Express Settings
-require('dotenv').config();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // Controller & Routes
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
-app.use('/publish', require('./controllers/publish'))
+app.use('/publish', require('./controllers/publishs'))
 
 
 // Listen for Connection

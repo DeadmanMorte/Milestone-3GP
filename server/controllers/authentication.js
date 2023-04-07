@@ -5,9 +5,14 @@ const bcrypt = require('bcrypt');
 
 const { User } = db;
 
+router.get('/',(req,res)=>{
+    res.send('auth works')
+})
+
 router.post('/', async (req,res) => {
     let user = await User.findOne({
-        where: { username: req.body.username }
+        where: { username: req.body.username}
+        
     })
     if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({ message: 'Could not find username with that username and password'})
@@ -17,7 +22,12 @@ router.post('/', async (req,res) => {
     }
 })
 
+<<<<<<< HEAD
 router.get('/self', async (req, res) => {
+=======
+router.get('/profile', async (req, res) => {
+    res.send("profile working")
+>>>>>>> 5c775d7f2015a91ee5d9526ab07a34f44c6c6bdc
     try {
         let user = await User.findOne({
             where: {
