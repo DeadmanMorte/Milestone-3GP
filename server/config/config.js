@@ -22,8 +22,5 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "postgres"
    }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5c775d7f2015a91ee5d9526ab07a34f44c6c6bdc
+
