@@ -5,8 +5,18 @@ const bcrypt = require('bcrypt');
 const { User } = db;
 
 
-router.get('/', (req,res)=>{
-    res.send("user route works");
+router.get('/', async (req,res)=>{
+    try {
+        let user = await User.findOne({
+            where: {
+                userId: req.session.userId
+            }
+        })
+        res.json(user)
+    } catch {
+        console.log('No account found error')
+        res.json(null)
+    };
 });
 
 // POST update to db for "Users" table, creates cookies.  
