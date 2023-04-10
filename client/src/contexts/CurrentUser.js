@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const CurrentUser = createContext()
 
+// Checks for coookies for Logged in User
 function CurrentUserProvider({ children }){
 
     const [currentUser, setCurrentUser] = useState(null)

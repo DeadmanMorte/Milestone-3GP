@@ -20,7 +20,7 @@ function SignUpForm() {
 	if (CurrentUser  != null){
         window.location.href = '/'
     }
-
+	// New profile POST fetch request/db update. 
 	async function handleSubmit(e) {
 		e.preventDefault()
 

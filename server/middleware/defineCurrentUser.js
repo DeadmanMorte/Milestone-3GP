@@ -2,6 +2,7 @@ const db = require("../models");
 
 const { User } = db;
 
+// Checks for cookies.
 async function defineCurrentUser(req, res, next) {
     try{
         let user = await User.findOne({

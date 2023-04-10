@@ -9,6 +9,7 @@ router.get('/', (req,res)=>{
     res.send("user route works");
 });
 
+// POST update to db for "Users" table, creates cookies.  
 router.post('/', async (req,res) => {
     let { password, ...rest} = req.body
     const user = await User.create({

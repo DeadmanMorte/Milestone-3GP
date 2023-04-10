@@ -9,6 +9,7 @@ router.get('/',(req,res)=>{
     res.send('auth works')
 })
 
+// Verify/login user and create cookies.
 router.post('/', async (req,res) => {
     let user = await User.findOne({
         where: { username: req.body.username}
@@ -22,6 +23,7 @@ router.post('/', async (req,res) => {
     }
 })
 
+// Confirm credentials/ cookies. 
 
 router.get('/self', async (req, res) => {
     res.json(req.currentUser)
