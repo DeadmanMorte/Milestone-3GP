@@ -23,4 +23,7 @@ module.exports = {
     "dialect": "postgres"
    }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f595ebd1ca575907b75fe62e4f4a215a73d81e8
