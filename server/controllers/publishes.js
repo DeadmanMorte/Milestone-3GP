@@ -9,10 +9,6 @@ router.post('/', async (req, res) => {
     res.json(publish)
 })
 
-router.get('/',(req,res)=>{
-    res.send("working")
-})
-
 router.get('/', async (req, res) => {
     const publishs = await Publish.findAll()
     res.json(publishs)
