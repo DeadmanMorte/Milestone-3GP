@@ -17,17 +17,10 @@ function SignUpForm() {
 	})
 
 	// Barrier check if logged in
-<<<<<<< HEAD
 	if (CurrentUser  != null){
         window.location.href = '/'
     }
 	// New profile POST fetch request/db update. 
-=======
-	// if (CurrentUser  != null){
-	//     return <Feed />
-	// }
-
->>>>>>> 971768d7dbfbe9109aa5769269fee06b0961036b
 	async function handleSubmit(e) {
 		e.preventDefault()
 
