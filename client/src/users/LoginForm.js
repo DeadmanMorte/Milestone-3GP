@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { CurrentUser } from "../contexts/CurrentUser";
 import SignUpForm from "./SignUpForm";
 import Feed from "./Feed"
-
+import Form from './Form.css'
 function LoginForm() {
 
 

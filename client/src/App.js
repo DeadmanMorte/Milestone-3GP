@@ -12,9 +12,15 @@ function App() {
       <BrowserRouter>
             <div className="App">
               <Routes>
+<<<<<<< HEAD
                 <Route exact path="/" element= {<Feed/>}/>
                 <Route exact path="/signup" element={<SignUpForm/>} />
                 <Route exact path="/home" element={<Home/>} />
+=======
+                <Route exact path="/" element= {<Home/>}/>
+                <Route exact path="/sign-up" element={<SignUpForm/>} />
+                <Route exact path="/feed" element={<Feed/>} />
+>>>>>>> 971768d7dbfbe9109aa5769269fee06b0961036b
                 <Route exact path="/login" element={<LoginForm/>} />
 
               </Routes>

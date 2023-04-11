@@ -1,6 +1,6 @@
 import { CurrentUser } from "../contexts/CurrentUser"
 import { useContext } from 'react'
-
+import homeStyle from "./homeStyle.css"
 function Home() {
 
   const { setCurrentUser } = useContext(CurrentUser)
@@ -43,4 +43,3 @@ function Home() {
   }
   
   export default Home;
-  
