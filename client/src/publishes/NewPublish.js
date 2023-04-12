@@ -6,7 +6,7 @@ function Publish({ publishId }) {
 
     useEffect(() => {
         // Fetch the publish data from the backend
-        fetch(`/api/publishs/${publishId}`)
+        fetch(`/api/publishes/${publishId}`)
             .then(response => response.json())
             .then(data => setPublish(data))
             .catch(error => setError(error));
