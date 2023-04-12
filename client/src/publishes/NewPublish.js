@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+//look at individual publish
 function Publish({ publishId }) {
     const [publish, setPublish] = useState(null);
     const [error, setError] = useState(null);
