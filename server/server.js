@@ -35,7 +35,7 @@ app.use(defineCurrentUser);
 // Controller & Routes
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
-app.use('/publish', require('./controllers/publishs'))
+app.use('/publishes', require('./controllers/publishes'))
 
 
 // Listen for Connection

@@ -10,41 +10,41 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    const publishs = await Publish.findAll()
-    res.json(publishs)
+    const publishes = await Publish.findAll()
+    res.json(publishes)
 })
 
 
-router.get('/:publishId', async (req, res) => {
-    let publishId = Number(req.params.publishId)
-    if (isNaN(publishId)) {
-        res.status(404).json({ message: `Invalid id "${publishId}"` })
+router.get('/:publish_id', async (req, res) => {
+    let publish_id = Number(req.params.publish_id)
+    if (isNaN(publish_id)) {
+        res.status(404).json({ message: `Invalid id "${publish_id}"` })
     } else {
         const publish = await Publish.findOne({
-            where: { publishId: publishId },
+            where: { publish_id: publish_id },
             include: {
                 association: 'comments',
                 include: 'author'
             }
         })
         if (!publish) {
-            res.status(404).json({ message: `Could not find publish with id "${publishId}"` })
+            res.status(404).json({ message: `Could not find publish with id "${publish_id}"` })
         } else {
             res.json(publish)
         }
     }
 })
 
-router.put('/:publishId', async (req, res) => {
-    let publishId = Number(req.params.publishId)
-    if (isNaN(publishId)) {
-        res.status(404).json({ message: `Invalid id "${publishId}"` })
+router.put('/:publish_id', async (req, res) => {
+    let publish_id = Number(req.params.publish_id)
+    if (isNaN(publish_id)) {
+        res.status(404).json({ message: `Invalid id "${publish_id}"` })
     } else {
         const publish = await Publish.findOne({
-            where: { publishId: publishId },
+            where: { publish_id: publish_id },
         })
         if (!publish) {
-            res.status(404).json({ message: `Could not find publish with id "${publishId}"` })
+            res.status(404).json({ message: `Could not find publish with id "${publish_id}"` })
         } else {
             Object.assign(publish, req.body)
             await publish.save()
@@ -53,18 +53,18 @@ router.put('/:publishId', async (req, res) => {
     }
 })
 
-router.delete('/:publishId', async (req, res) => {
-    let publishId = Number(req.params.publishId)
-    if (isNaN(publishId)) {
-        res.status(404).json({ message: `Invalid id "${publishId}"` })
+router.delete('/:publish_id', async (req, res) => {
+    let publish_id = Number(req.params.publish_id)
+    if (isNaN(publish_id)) {
+        res.status(404).json({ message: `Invalid id "${publish_id}"` })
     } else {
         const publish = await Publish.findOne({
             where: {
-                publishId: publishId
+                publish_id: publish_id
             }
         })
         if (!publish) {
-            res.status(404).json({ message: `Could not find publish with id "${publishId}"` })
+            res.status(404).json({ message: `Could not find publish with id "${publish_id}"` })
         } else {
             await publish.destroy()
             res.json(publish)
@@ -72,17 +72,17 @@ router.delete('/:publishId', async (req, res) => {
     }
 })
 
-router.post('/:publishId/comments', async (req, res) => {
-    const publishId = Number(req.params.publishId)
+router.post('/:publish_id/comments', async (req, res) => {
+    const publish_id = Number(req.params.publish_id)
 
     
 
     const publish = await Publish.findOne({
-        where: { publishId: publishId }
+        where: { publish_id: publish_id }
     })
 
     if (!publish) {
-        return res.status(404).json({ message: `Could not find publish with id "${publishId}"` })
+        return res.status(404).json({ message: `Could not find publish with id "${publish_id}"` })
     }
 
     if (!req.currentUser) {
@@ -91,8 +91,8 @@ router.post('/:publishId/comments', async (req, res) => {
 
     const comment = await Comment.create({
         ...req.body,
-        authorId: req.currentUser.userId,
-        publishId: publishId
+        authorId: req.currentUser.user_id,
+        publish_id: publish_id
     })
 
     res.send({
@@ -101,21 +101,21 @@ router.post('/:publishId/comments', async (req, res) => {
     })
 })
 
-router.delete('/:publishId/comments/:commentId', async (req, res) => {
-    let publishId = Number(req.params.publishId)
+router.delete('/:publish_id/comments/:commentId', async (req, res) => {
+    let publish_id = Number(req.params.publish_id)
     let commentId = Number(req.params.commentId)
 
-    if (isNaN(publishId)) {
-        res.status(404).json({ message: `Invalid id "${publishId}"` })
+    if (isNaN(publish_id)) {
+        res.status(404).json({ message: `Invalid id "${publish_id}"` })
     } else if (isNaN(commentId)) {
         res.status(404).json({ message: `Invalid id "${commentId}"` })
     } else {
         const comment = await Comment.findOne({
-            where: { commentId: commentId, publishId: publishId }
+            where: { commentId: commentId, publish_id: publish_id }
         })
         if (!comment) {
-            res.status(404).json({ message: `Could not find comment with id "${commentId}" for publish with id "${publishId}"` })
-        } else if (comment.authorId !== req.currentUser?.userId) {
+            res.status(404).json({ message: `Could not find comment with id "${commentId}" for publish with id "${publish_id}"` })
+        } else if (comment.authorId !== req.currentUser?.user_id) {
             res.status(403).json({ message: `You do not have permission to delete comment "${comment.commentId}"` })
         } else {
             await comment.destroy()

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
   };
   Publish.init({
-    PublishId: {
+    publish_id: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
       autoIncrement: true,

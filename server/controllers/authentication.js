@@ -5,9 +5,7 @@ const bcrypt = require('bcrypt');
 
 const { User } = db;
 
-router.get('/',(req,res)=>{
-    res.send('auth works')
-})
+
 
 // Verify/login user and create cookies.
 router.post('/', async (req,res) => {
@@ -34,12 +32,12 @@ router.get('/profile', async (req, res) => {
     try {
         let user = await User.findOne({
             where: {
-                userId: req.session.userId
+                user_id: req.session.user_id
             }
         })
         res.json(user)
     } catch {
-        res.json(null)
+        res.json('null')
     }
 })
   

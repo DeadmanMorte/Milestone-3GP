@@ -2,8 +2,8 @@ import CurrentUserProvider from './contexts/CurrentUser';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LoginForm from './users/LoginForm';
 import SignUpForm from './users/SignUpForm';
-import Home from './Home';
-import Feed from './publishes/Feed'
+import Home from './pages/Home';
+import Feed from './pages/Feed'
 import './App.css';
 
 function App() {

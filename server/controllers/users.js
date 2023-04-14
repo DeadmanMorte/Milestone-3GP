@@ -9,7 +9,7 @@ router.get('/', async (req,res)=>{
     try {
         let user = await User.findOne({
             where: {
-                userId: req.session.userId
+                user_id: req.session.user_id
             }
         })
         res.json(user)
