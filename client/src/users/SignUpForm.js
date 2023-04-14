@@ -6,7 +6,7 @@ import Feed from './Feed'
 
 function SignUpForm() {
 
-	const { setCurrentUser } = useContext(CurrentUser)
+	const {setCurrentUser } = useContext(CurrentUser)
 
 	const [user, setUser] = useState({
 		firstname: '',

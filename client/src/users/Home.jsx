@@ -7,11 +7,10 @@ function Home() {
     
     return (
 
-      // Basically nonsense ChatGTP temp code and styling.
       <main>
         <nav>
           <a href="/login">Log in</a>
-          <a href="/signup">Sign Up</a>
+          <a href="/sign-up">Sign Up</a>
         </nav>
         <div className="homepage" style={{ backgroundColor: '#f8f8f8', minHeight: '100vh' }}>
         <header style={{ backgroundColor: '#fff', padding: '20px 0' }}>
