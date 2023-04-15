@@ -34,7 +34,7 @@ function LoginForm() {
 
         if (response.status === 200) {
             setCurrentUser(data.user)
-            navigate(`/`)
+            navigate('/feed')
         } else {
             console.log('error')
         }

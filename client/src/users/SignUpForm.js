@@ -32,7 +32,7 @@ function SignUpForm() {
 			body: JSON.stringify(user)
 		})
 		setCurrentUser(user)
-		navigate('/')
+		navigate('/feed')
 	};
 
 	return (

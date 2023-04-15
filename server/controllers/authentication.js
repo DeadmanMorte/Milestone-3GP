@@ -23,11 +23,11 @@ router.post('/', async (req,res) => {
 
 // Confirm credentials/ cookies. 
 
-router.get('/self', async (req, res) => {
+router.get('/profile', async (req, res) => {
     res.json(req.currentUser)
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/self', async (req, res) => {
     res.send("profile working")
     try {
         let user = await User.findOne({

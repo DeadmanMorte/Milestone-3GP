@@ -5,7 +5,7 @@ import { useNavigate, useNavigation } from 'react-router-dom'
 function Feed(data) {
   const [publishes, setPublishes] = useState([]);
 
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
 
 
   const { setCurrentUser } = useContext(CurrentUser)
@@ -23,9 +23,9 @@ function Feed(data) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch(`http://localhost:4000/Users/`)
+      const response = await fetch(`http://localhost:4000/users/`)
       const resData = await response.json()
-      setUser(resData)
+      setUsers(resData)
     }
     fetchUser();
   }, []);
@@ -37,7 +37,7 @@ function Feed(data) {
     console.log('user live')
   }
 
-  let publishOutput = publishes.map((publish) => {
+  let userOutput = users.map((user) => {
 
     return (
       
@@ -45,16 +45,16 @@ function Feed(data) {
       <div className="col-sm-6" key={user.user_id}>
         <h2>
         {user.username}
-          <a href="#" onClick={() => navigate(`/Publishes/${publish.publish_id}`)} >
-            {publish.username}
+          <a href="#" onClick={() => navigate(`/users/${user.user_id}`)} >
+            {user.email}
 
           </a>
         </h2>
 
-        <img style={{ maxWidth: 200 }} src={publish.pic} />
+        {/* <img style={{ maxWidth: 200 }} src={publish.pic} /> */}
         <p className="text-center">
-          {publish.caption}
-          {publish.like}
+          {user.firstname}
+          {user.lastname}
         </p>
       </div>
 
@@ -63,30 +63,44 @@ function Feed(data) {
   })
   return (
     <main>
-      {publishOutput}
+      {userOutput}
       
-      work
+      
     </main>
   )
 }
+// let publishOutput = publishes.map((publish) => {
 
+//   return (
+    
+//     // <div className="col-sm-6" key={publish.publish_id}>
+//     <div className="col-sm-6" key={user.user_id}>
+//       <h2>
+//       {user.username}
+//         <a href="#" onClick={() => navigate(`/Publishes/${publish.publish_id}`)} >
+//           {user.username}
+
+//         </a>
+//       </h2>
+
+//       <img style={{ maxWidth: 200 }} src={publish.pic} />
+//       <p className="text-center">
+//         {publish.caption}
+//         {publish.like}
+//       </p>
+//     </div>
+
+//   )
+
+// })
+// return (
+//   <main>
+//     {publishOutput}
+    
+    
+//   </main>
+// )
+// }
 export default Feed;
 
-  // let publishsFormatted= publishs.map((publish) => {
-  //   return (
-  //     <div className="col-sm-6" key={publish.publish_id}>
-	// 			<h2>
-	// 				<a href="#" onClick={() => window.location.href = `/publishs/${publish.publish_id}`} >
-	// 					{publishs.username}
-	// 				</a>
-	// 			</h2>
-	// 			<p className="text-center">
-	// 				{publishs.caption}
-	// 			</p>
-	// 			<img style={{ maxWidth: 200 }} src={publishs.pic} alt={publishs.caption} />
-	// 			<p className="text-center">
-	// 				Liked by {publishs.like}
-	// 			</p>
-	// 		</div>
-  //   )
-  // })
+

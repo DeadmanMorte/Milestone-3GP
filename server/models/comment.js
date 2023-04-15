@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     updated_at: DataTypes.DATE
   }, {
     sequelize,
+    underscored: true,
     modelName: 'Comment',
   });
   return Comment;
