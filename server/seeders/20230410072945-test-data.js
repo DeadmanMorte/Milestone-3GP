@@ -18,7 +18,7 @@ module.exports = {
     await queryInterface.bulkInsert('Publishes', [{
       username: 'dingleburg',
       caption: 'Hi,my name is joe and this is my first post',
-      pic: `http://localhost:${process.env.PORT}/images/golden_retiver_cat_cropped.jpg`,
+      pic: `http://localhost:${process.env.PORT}/golden_retiver_cat_cropped.jpg`,
       createdAt: new Date(),
       updatedAt: new Date()
     }])
