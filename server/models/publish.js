@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     underscored: true,
-    modelName: 'Publishes',
+    modelName: 'Publish',
   })
   return Publish;
 }
