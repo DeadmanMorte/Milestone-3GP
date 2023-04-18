@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LoginForm from './users/LoginForm';
 import SignUpForm from './users/SignUpForm';
 import Home from './pages/Home';
-import Feed from './pages/Feed'
+import Feed from './pages/Feed';
+
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Route exact path="/feed" element= {<Feed/>}/>
                 <Route exact path="/signup" element={<SignUpForm/>} />
                 <Route exact path="/login" element={<LoginForm/>} />
+                
 
               </Routes>
             </div>

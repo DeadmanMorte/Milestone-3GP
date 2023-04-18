@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import {useNavigate, useParams} from 'react-router';
+import editPublish from 'editPublish';
 //look at individual publish
 function Publish({ publish_id }) {
     const [publish, setPublish] = useState(null);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch the publish data from the backend
@@ -13,6 +15,8 @@ function Publish({ publish_id }) {
             .catch(error => setError(error));
     }, [publish_id]);
 
+
+
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!publish) {
@@ -20,8 +24,9 @@ function Publish({ publish_id }) {
     } else {
         return (
             <div style={{ border: '1px solid gray', padding: '10px', margin: '10px', width: '300px' }}>
+                <a className='btn btn-warning' onClick={editPublish}>Edit</a>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    {/* <img src={publish.user.avatarUrl} alt="User avatar" style={{ borderRadius: '50%', marginRight: '10px' }} /> */}
+                   
                     <h2>{publish.user.username}</h2>
                 </div>
                 <img src={publish.pic} alt="publish image" style={{ maxWidth: '100%', marginTop: '10px' }} />

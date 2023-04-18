@@ -1,18 +1,18 @@
-import { useState } from "react"
-import { useHistory } from "react-router"
+import React, { useState } from 'react';
+import { useNavigate, useNavigation } from 'react-router-dom'
 
-function addPublish() {
-
-	const history = useHistory()
+function addPublish() {	
 
 	const [publish, setPublish] = useState({
 		username: '',
 		pic: '',
 		caption: '',
-		
-		
 	})
 
+
+
+	const navigate = useNavigate();
+	
 	async function handleSubmit(e) {
 		e.preventDefault()
 
@@ -21,10 +21,10 @@ function addPublish() {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(place)
+			body: JSON.stringify(publish)
 		})
 
-		history.push('/publishes')
+		navigate('/feed')
 	}
 
 	return (
