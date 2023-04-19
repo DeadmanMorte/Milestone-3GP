@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 function editComment() {
-    const { currentUser } = useContext(CurrentUser)
+    const { setCurrentUser } = useContext(CurrentUser)
 
     const [comment, setComment] = useState({
         content: '',

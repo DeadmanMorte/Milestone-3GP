@@ -6,12 +6,14 @@ import Feed from './Feed';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import addPublish from '../publishes/addPublish';
+
 function Home() {
     return (
         <div>
             <LoginForm />
             <SignUpForm />
             <Feed />
+            <addPublish/>
             
         </div>
     )

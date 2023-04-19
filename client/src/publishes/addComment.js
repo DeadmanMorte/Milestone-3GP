@@ -1,15 +1,28 @@
 //submit a new comment 
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { CurrentUser } from '../contexts/CurrentUser'
+import { useNavigate } from "react-router"
 
 function addComment({ publish, onSubmit }) {
 
-    const { currentUser } = useContext(CurrentUser)
 
     const [comment, setComment] = useState({
         content: '',
         like: false
     })
+    const { setCurrentUser } = useContext(CurrentUser)
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5000/Users`)
+            const users = await response.json()
+            setComment({ ...comment, authorId: users[0]?.user_id })
+
+        }
+        fetchData()
+    }, [])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -17,10 +30,11 @@ function addComment({ publish, onSubmit }) {
         setComment({
             content: '',
             like: false
+
         })
     }
 
-    if(!currentUser){
+    if (!currentUser) {
         return <p>You must be logged in to comment on a post</p>
     }
 

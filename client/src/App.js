@@ -4,7 +4,9 @@ import LoginForm from './users/LoginForm';
 import SignUpForm from './users/SignUpForm';
 import Home from './pages/Home';
 import Feed from './pages/Feed';
-
+import addPublish from './publishes/addPublish';
+import editPublish from './publishes/editPublish';
+// import addComment from './publishes/addComment';
 import './App.css';
 
 function App() {
@@ -17,8 +19,10 @@ function App() {
                 <Route exact path="/feed" element= {<Feed/>}/>
                 <Route exact path="/signup" element={<SignUpForm/>} />
                 <Route exact path="/login" element={<LoginForm/>} />
+                <Route exact path='/publishes:publish_id/edit' component={editPublish} />
+                <Route exact path='/addPublish' element={<addPublish/>}/>
+                {/* <Route exact path='/addComment' element={<addComment/>}/> */}
                 
-
               </Routes>
             </div>
       </BrowserRouter>

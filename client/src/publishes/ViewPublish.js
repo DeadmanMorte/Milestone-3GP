@@ -1,19 +1,21 @@
+
 import React, { useState, useEffect } from 'react';
 import {useNavigate, useParams} from 'react-router';
 import editPublish from 'editPublish';
 //look at individual publish
 function Publish({ publish_id }) {
-    const [publish, setPublish] = useState(null);
+    const [publish, setPublishes] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch the publish data from the backend
-        fetch(`/server/publishes/${publish_id}`)
-            .then(response => response.json())
-            .then(data => setPublish(data))
-            .catch(error => setError(error));
-    }, [publish_id]);
+        const fetchPublishes = async () => {
+          const response = await fetch(`http://localhost:4000/publishes/`)
+          const resData = await response.json()
+          setPublishes(resData)
+        }
+        fetchPublishes();
+      }, []);
 
 
 
