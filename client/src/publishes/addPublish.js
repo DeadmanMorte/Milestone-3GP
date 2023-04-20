@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useNavigation } from 'react-router-dom'
 
-function addPublish() {	
+function AddPublish() {	
 
 	const [publish, setPublish] = useState({
 		username: '',
@@ -47,6 +47,7 @@ function addPublish() {
 					<label htmlFor="picture">place a picture</label>
 					<input
 						required
+						type='file'
 						value={publish.pic}
 						onChange={e => setPublish({ ...publish, pic: e.target.value })}
 						className="form-control"
@@ -72,4 +73,4 @@ function addPublish() {
 	)
 }
 
-export default addPublish
+export default AddPublish

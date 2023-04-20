@@ -1,9 +1,9 @@
 //submit a new comment 
 import { useContext, useState, useEffect } from "react"
-import { CurrentUser } from '../contexts/CurrentUser'
+import { CurrentUser } from "../contexts/CurrentUser"
 import { useNavigate } from "react-router"
 
-function addComment({ publish, onSubmit }) {
+function AddComment({ publish, onSubmit }) {
 
 
     const [comment, setComment] = useState({
@@ -34,7 +34,7 @@ function addComment({ publish, onSubmit }) {
         })
     }
 
-    if (!currentUser) {
+    if (!CurrentUser) {
         return <p>You must be logged in to comment on a post</p>
     }
 
@@ -69,4 +69,4 @@ function addComment({ publish, onSubmit }) {
     )
 }
 
-export default addComment
+export default AddComment

@@ -4,9 +4,9 @@ import LoginForm from './users/LoginForm';
 import SignUpForm from './users/SignUpForm';
 import Home from './pages/Home';
 import Feed from './pages/Feed';
-import addPublish from './publishes/addPublish';
-import editPublish from './publishes/editPublish';
-// import addComment from './publishes/addComment';
+import AddPublish from './publishes/addPublish';
+import EditPublish from './publishes/editPublish';
+import AddComment from './publishes/addComment';
 import './App.css';
 
 function App() {
@@ -19,9 +19,9 @@ function App() {
                 <Route exact path="/feed" element= {<Feed/>}/>
                 <Route exact path="/signup" element={<SignUpForm/>} />
                 <Route exact path="/login" element={<LoginForm/>} />
-                <Route exact path='/publishes:publish_id/edit' component={editPublish} />
-                <Route exact path='/addPublish' element={<addPublish/>}/>
-                {/* <Route exact path='/addComment' element={<addComment/>}/> */}
+                <Route exact path='/publishes:publish_id/edit' element={<EditPublish/>} />
+                <Route exact path='/publishes/new' element={<AddPublish/>}/>
+                <Route exact path='/publishes/comment' element={<AddComment/>}/>
                 
               </Routes>
             </div>

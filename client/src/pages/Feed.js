@@ -45,7 +45,7 @@ function Feed(data) {
   if (CurrentUser == null) {
     window.location.href = '/'
   } else if (CurrentUser) {
-    console.log('user live')
+    console.log(`logged in as ${publishes.username}`)
   }
 
   let publishOutput = publishes.map((publish) => {
@@ -66,7 +66,7 @@ function Feed(data) {
     return (
       <div>
 
-        <a href="" onClick={() => navigate('/addPublish')} >add</a>
+        <a href="" onClick={() => navigate('/publishes/new')} >add publish</a>
         <div className="col-sm-6" key={publish.publish_id}>
 
           <h2>
@@ -85,7 +85,7 @@ function Feed(data) {
             {publish.caption}
 
           </p>
-          <a href="" onClick={() => navigate(`/publishes/addComment`)} >add a Comment</a>
+          <a href="" onClick={() => navigate(`/publishes/comment`)} >add a Comment</a>
         </div>
       </div>
     )

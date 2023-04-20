@@ -5,7 +5,9 @@ import LoginForm from '../users/LoginForm';
 import Feed from './Feed';
 import React from 'react';
 import Navbar from '../components/Navbar';
-import addPublish from '../publishes/addPublish';
+import AddPublish from '../publishes/addPublish';
+import EditPublish from '../publishes/editPublish';
+import AddComment from '../publishes/addComment';
 
 function Home() {
     return (
@@ -13,8 +15,9 @@ function Home() {
             <LoginForm />
             <SignUpForm />
             <Feed />
-            <addPublish/>
-            
+            <AddPublish/>
+            <EditPublish/>
+            <AddComment/>
         </div>
     )
 }
