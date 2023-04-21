@@ -14,10 +14,7 @@ function Home() {
         <div>
             <LoginForm />
             <SignUpForm />
-            <Feed />
-            <AddPublish/>
-            <EditPublish/>
-            <AddComment/>
+
         </div>
     )
 }
