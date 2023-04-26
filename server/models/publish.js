@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
   };
   Publish.init({
-    PublishId: {
+    publish_id: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
       autoIncrement: true,
@@ -19,14 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     caption: DataTypes.STRING,
     pic: DataTypes.STRING,
-    like: {
-      type: Number,
-      default: 0,
-    }
+
   }, {
     sequelize,
-    underscored: true,
     modelName: 'Publish',
+    tableName:'Publishes'
   })
   return Publish;
 }

@@ -1,13 +1,15 @@
 import { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate } from "react-router";
+
 import { CurrentUser } from "../contexts/CurrentUser";
-import Feed from './Feed'
+
 // import Form from './Form.css'
 
 function SignUpForm() {
 
 	const { setCurrentUser } = useContext(CurrentUser)
-
+	const navigate = useNavigate();
+	
 	const [user, setUser] = useState({
 		firstname: '',
 		lastname: '',
@@ -21,10 +23,16 @@ function SignUpForm() {
         window.location.href = '/'
     }
 	// New profile POST fetch request/db update. 
+=======
+	// if (CurrentUser  != null){
+	//     return <Feed />
+	// }
+
+>>>>>>> 971768d7dbfbe9109aa5769269fee06b0961036b
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		const response = await fetch(`http://localhost:5000/users/`, {
+		 await fetch(`http://localhost:4000/users/`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -32,15 +40,12 @@ function SignUpForm() {
 			},
 			body: JSON.stringify(user)
 		})
-		if (response.status === 200) {
-			setCurrentUser(user)
-			window.location.href = '/'
-		} else {
-			console.log('Sign Up fetch error')
-		}
-	}
+		setCurrentUser(user)
+		navigate('/feed')
+	};
 
 	return (
+		
 		<form onSubmit={handleSubmit}>
 			<div>
 				<label htmlFor="firstName">First Name:</label>
@@ -100,6 +105,7 @@ function SignUpForm() {
 			</div>
 			<input className="btn btn-primary" type="submit" value="Sign Up" />
 		</form>
+		
 	);
 }
 
