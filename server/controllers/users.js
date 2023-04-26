@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const { User } = db;
 
 
-<<<<<<< HEAD
 router.get('/', async (req,res)=>{
     try {
         let user = await User.findOne({
@@ -21,8 +20,6 @@ router.get('/', async (req,res)=>{
 });
 
 // POST update to db for "Users" table, creates cookies.  
-=======
->>>>>>> 971768d7dbfbe9109aa5769269fee06b0961036b
 router.post('/', async (req,res) => {
     let { password, ...rest} = req.body
     const user = await User.create({
