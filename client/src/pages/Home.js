@@ -16,10 +16,7 @@ function Home() {
 
     return (
         <div>
-            <LoginForm />
-            <SignUpForm />
-            
-            
+           {currentUser ? <Feed /> : <LoginForm/ > }
         </div>
     )
 }
