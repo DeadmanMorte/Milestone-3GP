@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser";
 import AddComment from "./addComment";
-import ShowComment from './ShowComment';
+import ShowComment from './showComment';
 
 
 function ViewPublish() {
