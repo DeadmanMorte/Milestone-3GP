@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { CurrentUser } from '../contexts/CurrentUser'
 
-function showComment({ comment, onDelete }) {
-    const { setCurrentUser } = useContext(CurrentUser)
+function ShowComment({ comment, onDelete }) {
+    const { currentUser } = useContext(CurrentUser)
 
     let deleteButton = null;
 
-    if (setCurrentUser?.user_id === comment.authorId) {
+    if (currentUser?.user_id === comment.author_id) {
         deleteButton = (
             <button className="btn btn-danger" onClick={onDelete} >
                 Delete Comment
@@ -26,4 +26,4 @@ function showComment({ comment, onDelete }) {
     )
 }
 
-export default showComment;
+export default ShowComment;

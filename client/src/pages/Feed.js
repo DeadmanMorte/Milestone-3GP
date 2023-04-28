@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CurrentUser } from '../contexts/CurrentUser';
 import { useNavigate, useNavigation } from 'react-router-dom'
+import Navbar from '../components/Navbar';
 import editPublish from '../publishes/editPublish';
 
 
@@ -58,29 +59,31 @@ function Feed(data) {
     // }
 
     return (
-      <div className='publish-container'>
-        <a href="" onClick={() => navigate('/publishes/new')} >add publish</a>
-        <div className="col-sm-6" key={publish.publish_id}>
+      <main>
+        <div className='publish-container'>
+          <a href="" onClick={() => navigate('/publishes/new')} >add publish</a>
+          <div className="col-sm-6" key={publish.publish_id}>
 
-          <h2>
-            <a className='btn btn-warning' onClick={() => navigate(`/publishes:publish_id/edit`)}>Edit</a>
-            <div className='publish-title'>
-            <a href="" onClick={() => navigate(`/Publishes/${publish.publish_id}`)} >
+            <h2>
+              <a className='btn btn-warning' onClick={() => navigate(`/publishes/${publish.publish_id}/edit`)}>Edit</a>
+              <div className='publish-title'>
+              <a href="" onClick={() => navigate(`/publishes/${publish.publish_id}`)} >
 
-              {publish.username}
+                {publish.username}
 
-            </a>
-            </div>
-          </h2>
+              </a>
+              </div>
+            </h2>
 
-          <img style={{ maxWidth: 200 }} src={publish.pic} />
-          <p className="publish-caption">
-            {publish.caption}
+            <img style={{ maxWidth: 200 }} src={publish.pic} />
+            <p className="publish-caption">
+              {publish.caption}
 
-          </p>
-          <a href="" onClick={() => navigate(`/publishes/comment`)} >add a Comment</a>
+            </p>
+            <a href="" onClick={() => navigate(`/publishes/comment`)} >add a Comment</a>
+          </div>
         </div>
-      </div>
+      </main>
     )
 
   })

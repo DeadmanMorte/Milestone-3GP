@@ -137,4 +137,106 @@ input[type="password"] {
   margin-bottom: 20px;
 } */
 
+.navbar {
+  background-color: #333; /* background color */
+  position: fixed; /* keep navbar fixed at the top */
+  width: 100%;
+  z-index: 1; /* ensure navbar is on top of other elements */
+}
+
+/* Links */
+.navbar a {
+  float: left; /* align links to the left */
+  color: #f2f2f2; /* link color */
+  text-align: center;
+  padding: 14px 16px; /* add padding to the links */
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Active link */
+.navbar a.active {
+  background-color: #4CAF50; /* background color for active link */
+  color: white; /* font color for active link */
+}
+
+/* Hover state for links */
+.navbar a:hover {
+  background-color: #ddd; /* background color on hover */
+  color: black; /* font color on hover */
+}
+
+/* Center the logo/image */
+.navbar .logo {
+  display: block; /* make the logo a block element */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80px; /* set maximum width for logo */
+  height: auto; /* set height to auto to maintain aspect ratio */
+  padding: 5px; /* add padding around logo */
+}
+
+/* Create a dropdown menu */
+.dropdown {
+  float: left; /* align dropdown to the left */
+  overflow: hidden; /* hide overflow */
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add hover state to dropdown button */
+.dropdown:hover .dropbtn {
+  background-color: #ddd; /* background color on hover */
+  color: black; /* font color on hover */
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none; /* hide dropdown content by default */
+  position: absolute; /* position dropdown relative to parent */
+  background-color: #f9f9f9; /* background color */
+  min-width: 160px; /* set minimum width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* add shadow */
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none; /* remove float */
+  color: black; /* font color */
+  padding: 12px 16px; /* add padding */
+  text-decoration: none; /* remove underline */
+  display: block; /* make links block elements */
+  text-align: left; /* align text to left */
+}
+
+/* Add hover state to dropdown links */
+.dropdown-content a:hover {
+  background-color: #ddd; /* background color on hover */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block; /* display dropdown content on hover */
+}
+
+/* Add a right margin to the last link to separate it from the dropdown */
+.navbar a:last-child {
+  margin-right: 20px;
+}
+
+.logged-me {
+  font-size: larger;
+  align-self: flex-end;
+}
 

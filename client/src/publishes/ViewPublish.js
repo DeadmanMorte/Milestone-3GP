@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser";
 import AddComment from "./addComment";
+import ShowComment from './ShowComment';
 
 
 function ViewPublish() {
@@ -17,7 +18,7 @@ function ViewPublish() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/Publishs/${publish_id}`)
+			const response = await fetch(`http://localhost:4000/publishes/${publish_id}`)
 			const resData = await response.json()
 			setPublishes(resData)
 		}
@@ -29,30 +30,30 @@ function ViewPublish() {
 	}
 
 	function editPublish() {
-		navigate(`/Publishs/${publishes.publish_id}/edit`)
+		navigate(`/publishes/${publishes.publish_id}/edit`)
 	}
 
 	async function deletePublish() {
-		await fetch(`http://localhost:5000/Publishs/${publishes.publish_id}`, {
+		await fetch(`http://localhost:4000/publishes/${publishes.publish_id}`, {
 			method: 'DELETE'
 		})
-		navigate('/Publishes')
+		navigate('/feed')
 	}
 
 	async function deleteComment(deletedComment) {
-		await fetch(`http://localhost:5000/Publishs/${publishes.PublishId}/comments/${deletedComment.commentId}`, {
+		await fetch(`http://localhost:4000/publishes/${publishes.publish_id}/comments/${deletedComment.comment_id}`, {
 			method: 'DELETE'
 		})
 
 		setPublishes({
 			...publishes,
 			comments: publishes.comments
-				.filter(comment => comment.commentId !== deletedComment.commentId)
+				.filter(comment => comment.comment_id !== deletedComment.comment_id)
 		})
 	}
 
 	async function createComment(commentAttributes) {
-		const response = await fetch(`http://localhost:5000/Publishs/${publishes.PublishId}/comments`, {
+		const response = await fetch(`http://localhost:4000/publishes/${publishes.publish_id}/comments`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -79,16 +80,20 @@ function ViewPublish() {
 			No comments yet!
 		</h3>
 	)
-	
-	
-		
-		
+
+	if (publishes.comments.length) {
+		comments = publishes.comments.map(comment => {
+			return (
+				<ShowComment key={comment.comment_id} comment={comment} onDelete={() => deleteComment(comment)} />
+			)
+		})
 	}
-
-
+	
+	
+		
 	let PublishActions = null
 
-	if (CurrentUser) {
+	if (currentUser) {
 		PublishActions = (
 			<>
 				<a className="btn btn-warning" onClick={editPublish}>
@@ -116,12 +121,10 @@ function ViewPublish() {
 					
 					<br />
 					<h2>
-						Description
+					{publishes.caption} 
 					</h2>
-					<h3>
-						{publishes.username} 
-					</h3>
 					
+				
 					<br />
 					{PublishActions}
 				</div>
@@ -139,6 +142,10 @@ function ViewPublish() {
 			/>
 		</main>
 	)
+		
+	}
+
+
 
 
 export default ViewPublish

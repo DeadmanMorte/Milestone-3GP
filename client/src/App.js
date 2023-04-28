@@ -6,20 +6,24 @@ import Home from './pages/Home';
 import Feed from './pages/Feed';
 import AddPublish from './publishes/addPublish';
 import EditPublish from './publishes/editPublish';
+import ViewPublish from './publishes/ViewPublish';
 import AddComment from './publishes/addComment';
 import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <CurrentUserProvider>
       <BrowserRouter>
             <div className="App">
+              <Navbar />
               <Routes>
                 <Route exact path="/" element={<Home/>} />
                 <Route exact path="/feed" element= {<Feed/>}/>
                 <Route exact path="/signup" element={<SignUpForm/>} />
                 <Route exact path="/login" element={<LoginForm/>} />
-                <Route exact path='/publishes:publish_id/edit' element={<EditPublish/>} />
+                <Route exact path='/publishes/:publish_id' element={<ViewPublish/>} />
+                <Route exact path='/publishes/:publish_id/edit' element={<EditPublish/>} />
                 <Route exact path='/publishes/new' element={<AddPublish/>}/>
                 <Route exact path='/publishes/comment' element={<AddComment/>}/>
                 

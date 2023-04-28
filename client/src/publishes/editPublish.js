@@ -14,9 +14,6 @@ function EditPublish() {
 
     
 
-
-
-
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`http://localhost:4000/publishes/${publish_id}`)
@@ -30,7 +27,7 @@ function EditPublish() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        await fetch(`http://localhost:4000/publishes/`, {
+        await fetch(`http://localhost:4000/publishes/${publish.publish_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +43,7 @@ function EditPublish() {
             <h1>Edit Publication</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmFor='caption'> Caption</label>
+                    <label htmlFor='caption'> Caption</label>
                     <input
                         
                         value={publish.caption}
@@ -56,10 +53,10 @@ function EditPublish() {
                         name='caption'
                     />
                 </div>
-                <div>
-                    <label htmFor='pic'> Pic</label>
+                {/* <div>
+                    <label htmlFor='pic'> Pic</label>
                     <input
-                        
+                        defaultValue='../public/golden_retiver_cat_cropped.jpg.'
                         type='file'
                         value={publish.pic}
                         onChange={e => setPublish({ ...publish, pic: e.target.value })}
@@ -67,7 +64,7 @@ function EditPublish() {
                         id='pic'
                         name='pic'
                     />
-                </div>
+                </div> */}
                 <input className='btn btn-primary' type='submit' value='Edit Publish' />
             </form >
         </main >

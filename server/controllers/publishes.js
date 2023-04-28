@@ -59,9 +59,7 @@ router.delete('/:publish_id', async (req, res) => {
         res.status(404).json({ message: `Invalid id "${publish_id}"` })
     } else {
         const publish = await Publish.findOne({
-            where: {
-                publish_id: publish_id
-            }
+            where: {publish_id: publish_id},
         })
         if (!publish) {
             res.status(404).json({ message: `Could not find publish with id "${publish_id}"` })
