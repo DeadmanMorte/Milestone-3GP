@@ -6,6 +6,7 @@ export const CurrentUser = createContext()
 // Checks for coookies for Logged in User
 function CurrentUserProvider({ children }){
 
+
     const [currentUser, setCurrentUser] = useState(null)
     useEffect(() => {
 
@@ -15,9 +16,12 @@ function CurrentUserProvider({ children }){
             })
             let user = await response.json()
             setCurrentUser(user)
+            
         }
-        getLoggedInUser()
+        getLoggedInUser();
+        
     }, [])
+
 
     return (
         <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>

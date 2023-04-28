@@ -13,40 +13,34 @@ function Feed(data) {
     caption: ''
   }]);
 
-  const [users, setUsers] = useState([{
+  const [users, setUsers] = useState({
+    firstname: '',
     username: '',
-  }]);
+  });
 
-
-
-  const { setCurrentUser } = useContext(CurrentUser)
+  const { currentUser } = useContext(CurrentUser)
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPublishes = async () => {
-      const response = await fetch(`http://localhost:4000/publishes/`)
+      const response = await fetch(`http://localhost:4000/publishes`)
       const resData = await response.json()
       setPublishes(resData)
     }
     fetchPublishes();
   }, []);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await fetch(`http://localhost:4000/Users/`)
-      const resData = await response.json()
-      setUsers(resData)
-    }
-    fetchUsers();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     const response = await fetch(`http://localhost:4000/users/`)
+  //     const resData = await response.json()
+  //     setUsers(resData)
+  //   }
+  //   fetchUsers();
+  // }, []);
 
-  // Barrier check if not logged in
-  if (CurrentUser == null) {
-    window.location.href = '/'
-  } else if (CurrentUser) {
-    console.log(`logged in as ${publishes.username}`)
-  }
+ 
 
   let publishOutput = publishes.map((publish) => {
 
@@ -64,24 +58,23 @@ function Feed(data) {
     // }
 
     return (
-      <div>
-
+      <div className='publish-container'>
         <a href="" onClick={() => navigate('/publishes/new')} >add publish</a>
         <div className="col-sm-6" key={publish.publish_id}>
 
           <h2>
             <a className='btn btn-warning' onClick={() => navigate(`/publishes:publish_id/edit`)}>Edit</a>
-
+            <div className='publish-title'>
             <a href="" onClick={() => navigate(`/Publishes/${publish.publish_id}`)} >
 
               {publish.username}
 
             </a>
-
+            </div>
           </h2>
 
           <img style={{ maxWidth: 200 }} src={publish.pic} />
-          <p className="text-center">
+          <p className="publish-caption">
             {publish.caption}
 
           </p>
@@ -93,6 +86,7 @@ function Feed(data) {
   })
   return (
     <main>
+      <h1>FEED</h1>
       {publishOutput}
 
 

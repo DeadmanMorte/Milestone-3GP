@@ -5,26 +5,20 @@ const bcrypt = require('bcrypt');
 const { User } = db;
 
 
-<<<<<<< HEAD
 router.get('/', async (req,res)=>{
     try {
         let user = await User.findOne({
             where: {
-                userId: req.session.userId
+                user_id: req.session.user_id
             }
         })
         res.json(user)
+        console.log('user found')
     } catch {
         console.log('No account found error')
         res.json(null)
     };
 });
-=======
-router.get('/', async (req, res) => {
-    const users = await User.findAll()
-    res.json(users)
-})
->>>>>>> 93b82f384c4b0014883eaa9ca07104d202304cfa
 
 // POST update to db for "Users" table, creates cookies.  
 router.post('/', async (req,res) => {

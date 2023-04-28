@@ -4,3 +4,155 @@ img {
     margin-right: auto;
     width: 50%;
 }
+/* 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+  }
+  
+  .col-sm-6 {
+    margin: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .col-sm-6:hover {
+    transform: scale(1.05);
+  }
+  
+  .col-sm-6 img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 5px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+  }
+  
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #007bff;
+  }
+   */
+
+   /* Feed Container */
+.main {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  /* Feed Title */
+  h1 {
+    color: #695958;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Publish Container */
+  .publish-container {
+    background-color: #cedada;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Publish Title */
+  .publish-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Publish Title Text */
+  .publish-title a {
+    color: #695958;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .publish-title a:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Publish Image */
+  .publish-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Publish Caption */
+  .publish-caption {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Comment Button */
+  .comment-button {
+    background-color: #ff6b6b;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .comment-button:hover {
+    background-color: #ff8c8c;
+  }
+  
+  

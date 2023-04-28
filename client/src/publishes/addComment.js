@@ -16,7 +16,7 @@ function AddComment({ publish, onSubmit }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/Users`)
+            const response = await fetch(`http://localhost:5000/users`)
             const users = await response.json()
             setComment({ ...comment, authorId: users[0]?.user_id })
 

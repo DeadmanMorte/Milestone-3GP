@@ -25,19 +25,19 @@ router.post('/', async (req,res) => {
 
 router.get('/self', async (req, res) => {
     res.json(req.currentUser)
-})
+    })
 
 router.get('/profile', async (req, res) => {
-    res.send("profile working")
     try {
         let user = await User.findOne({
             where: {
                 user_id: req.session.user_id
             }
         })
-        res.json(user)
+        res.json(user);
+        console.log("profile working");
     } catch {
-        res.json('null')
+        res.json(null);
     }
 })
   

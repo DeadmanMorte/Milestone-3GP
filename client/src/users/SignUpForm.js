@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import { CurrentUser } from "../contexts/CurrentUser";
 
-// import Form from './Form.css'
+import './Form.css'
 
 function SignUpForm() {
 
@@ -18,17 +18,19 @@ function SignUpForm() {
 		password: ''
 	})
 
-	// Barrier check if logged in
-	if (CurrentUser  != null){
-        window.location.href = '/'
-    }
-	// New profile POST fetch request/db update. 
-=======
-	// if (CurrentUser  != null){
-	//     return <Feed />
-	// }
+		// Barrier check if logged in
 
->>>>>>> 971768d7dbfbe9109aa5769269fee06b0961036b
+	useEffect(() => {
+
+        const checkLoggedInUser =  () => {
+			if (user.firstname  !== ''){
+				console.log(`${user.firstname}`)			
+			} 
+		}
+        checkLoggedInUser()
+    }, [])
+	
+	
 	async function handleSubmit(e) {
 		e.preventDefault()
 
@@ -41,12 +43,13 @@ function SignUpForm() {
 			body: JSON.stringify(user)
 		})
 		setCurrentUser(user)
-		navigate('/feed')
+		navigate('/')
 	};
 
 	return (
 		
 		<form onSubmit={handleSubmit}>
+					<h1>Sign Up Form</h1>
 			<div>
 				<label htmlFor="firstName">First Name:</label>
 				<input

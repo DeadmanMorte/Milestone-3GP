@@ -6,7 +6,7 @@ import './Form.css'
 function LoginForm() {
 
 
-    const { setCurrentUser } = useContext(CurrentUser)
+    const { currentUser, setCurrentUser } = useContext(CurrentUser)
 
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
@@ -34,9 +34,10 @@ function LoginForm() {
 
         if (response.status === 200) {
             setCurrentUser(data.user)
-            navigate(`/feed`)
+            navigate(`/`)
+            console.log(currentUser)
         } else {
-            console.log('error')
+            console.log('login error')
         }
 
 
