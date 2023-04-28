@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import { CurrentUser } from "../contexts/CurrentUser";
 
-import './Form.css'
+// import Form from './Form.css'
 
 function SignUpForm() {
 
@@ -18,19 +18,8 @@ function SignUpForm() {
 		password: ''
 	})
 
-		// Barrier check if logged in
-
-	useEffect(() => {
-
-        const checkLoggedInUser =  () => {
-			if (user.firstname  !== ''){
-				console.log(`${user.firstname}`)			
-			} 
-		}
-        checkLoggedInUser()
-    }, [])
 	
-	
+	// New profile POST fetch request/db update. 
 	async function handleSubmit(e) {
 		e.preventDefault()
 
@@ -43,13 +32,12 @@ function SignUpForm() {
 			body: JSON.stringify(user)
 		})
 		setCurrentUser(user)
-		navigate('/')
+		navigate('/feed')
 	};
 
 	return (
 		
 		<form onSubmit={handleSubmit}>
-					<h1>Sign Up Form</h1>
 			<div>
 				<label htmlFor="firstName">First Name:</label>
 				<input

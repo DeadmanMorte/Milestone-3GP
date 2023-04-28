@@ -73,7 +73,7 @@ router.delete('/:publish_id', async (req, res) => {
 router.post('/:publish_id/comments', async (req, res) => {
     const publish_id = Number(req.params.publish_id)
 
-    
+    req.body.like = req.body.like ? true : false
 
     const publish = await Publish.findOne({
         where: { publish_id: publish_id }
@@ -89,7 +89,7 @@ router.post('/:publish_id/comments', async (req, res) => {
 
     const comment = await Comment.create({
         ...req.body,
-        authorId: req.currentUser.user_id,
+        author_id: req.currentUser.user_id,
         publish_id: publish_id
     })
 

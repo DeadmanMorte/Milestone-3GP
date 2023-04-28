@@ -25,9 +25,11 @@ function Navbar() {
 
   if (currentUser) {
       loginActions = (
+        <div className='logged-me'>
           <li style={{ float: 'right' }}>
               Logged in as {currentUser.firstname} {currentUser.lastname}
           </li>
+        </div>
       )
   }
 

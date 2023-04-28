@@ -135,7 +135,7 @@ function ViewPublish() {
 				{comments}
 			</div>
 			<hr />
-			<h2>Add comment</h2>
+			<h2>Want to add a comment?</h2>
 			<AddComment
 				Publish={publishes}
 				onSubmit={createComment}
